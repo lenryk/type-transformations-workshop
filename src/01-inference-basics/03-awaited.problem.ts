@@ -8,7 +8,9 @@ const getUser = () => {
   });
 };
 
-type ReturnValue = ReturnType<typeof getUser>;
+// this helper unwraps the promise result to get the final type
+// Promise<number> => number
+type ReturnValue = Awaited<ReturnType<typeof getUser>>;
 
 type tests = [
   Expect<Equal<ReturnValue, { id: string; name: string; email: string }>>,
