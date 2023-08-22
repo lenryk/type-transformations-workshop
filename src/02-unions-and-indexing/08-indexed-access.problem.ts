@@ -8,11 +8,17 @@ export const fakeDataDefaults = {
   ID: "id",
 };
 
-export type StringType = unknown;
-export type IntType = unknown;
-export type FloatType = unknown;
-export type BooleanType = unknown;
-export type IDType = unknown;
+// this returns an interface of types from the fakeDataDefaults object
+// this makes it easier to access individual property types
+type FakeDataDefaults = typeof fakeDataDefaults;
+
+// we can now reference the new type and access the specific property
+// we can also nest into objects like FakeDataDefaults["Object"]["PropA"]
+export type StringType = FakeDataDefaults["String"];
+export type IntType = FakeDataDefaults["Int"];
+export type FloatType = FakeDataDefaults["Float"];
+export type BooleanType = FakeDataDefaults["Boolean"];
+export type IDType = FakeDataDefaults["ID"];
 
 type tests = [
   Expect<Equal<StringType, string>>,
