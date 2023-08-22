@@ -14,7 +14,9 @@ export type Event =
       event: KeyboardEvent;
     };
 
-type NonKeyDownEvents = unknown;
+// this is the opposite of the Extract type
+// this returns all the types apart from the ones listed
+type NonKeyDownEvents = Exclude<Event, {type: "keydown"}>;
 
 type tests = [
   Expect<
