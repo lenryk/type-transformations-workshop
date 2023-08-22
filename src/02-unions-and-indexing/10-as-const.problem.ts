@@ -11,7 +11,9 @@ export const programModeEnumMap = {
   SELF_DIRECTED: "selfDirected",
   PLANNED_ONE_ON_ONE: "planned1on1",
   PLANNED_SELF_DIRECTED: "plannedSelfDirected",
-};
+} as const;
+// this line as const stops the type widening which is making them all strings
+// by disabling the type widening they will just be their literal values
 
 export type GroupProgram = typeof programModeEnumMap["GROUP"];
 export type AnnouncementProgram = typeof programModeEnumMap["ANNOUNCEMENT"];
