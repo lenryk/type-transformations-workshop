@@ -11,7 +11,9 @@ const testingFrameworks = {
     label: "Mocha",
   },
 };
-
-type TestingFramework = unknown;
+// easier to read from right to left
+// we get the types from the testingFrameworks object
+// we then grab the key names which make our union literal
+type TestingFramework = keyof typeof testingFrameworks
 
 type tests = [Expect<Equal<TestingFramework, "vitest" | "jest" | "mocha">>];
