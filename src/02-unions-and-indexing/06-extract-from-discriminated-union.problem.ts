@@ -14,6 +14,8 @@ export type Event =
       event: KeyboardEvent;
     };
 
-type ClickEvent = unknown;
+// Extract<Type, Union>
+// We only have to define one type which is the click - but we could do event: MouseEvent
+type ClickEvent = Extract<Event, { type: "click"}>;
 
 type tests = [Expect<Equal<ClickEvent, { type: "click"; event: MouseEvent }>>];
