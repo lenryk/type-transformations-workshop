@@ -9,7 +9,14 @@ export const programModeEnumMap = {
   PLANNED_SELF_DIRECTED: "plannedSelfDirected",
 } as const;
 
-export type IndividualProgram = unknown;
+// we grab the types of programModeEnumMap and make sure to exclude the top 2 properties
+// this returns a union type that goes inside the brackets
+// so it is basically this typeof programModeEnumMap["ONE_ON_ONE" | "SELF_DIRECTED" | "PLANNED_ONE_ON_ONE" | "PLANNED_SELF_DIRECTED"];
+export type IndividualProgram = typeof programModeEnumMap[Exclude<
+  keyof typeof programModeEnumMap,
+  "GROUP" | "ANNOUNCEMENT"
+>];
+
 
 type tests = [
   Expect<
