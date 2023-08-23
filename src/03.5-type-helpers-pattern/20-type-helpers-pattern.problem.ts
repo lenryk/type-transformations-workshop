@@ -1,6 +1,8 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
-type ReturnWhatIPassIn = unknown;
+// this is basically a generic function aka type helper
+// we return whatever variable type we pass in
+type ReturnWhatIPassIn<T> = T;
 
 type tests = [
   Expect<Equal<ReturnWhatIPassIn<1>, 1>>,
