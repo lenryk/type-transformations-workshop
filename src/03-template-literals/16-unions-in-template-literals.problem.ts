@@ -4,7 +4,9 @@ type BreadType = "rye" | "brown" | "white";
 
 type Filling = "cheese" | "ham" | "salami";
 
-type Sandwich = unknown;
+// create a template literal and the variable creates permutations of all the outcomes
+// there is a limit of around 10k permutations
+type Sandwich = `${BreadType} sandwich with ${Filling}`;
 
 type tests = [
   Expect<
