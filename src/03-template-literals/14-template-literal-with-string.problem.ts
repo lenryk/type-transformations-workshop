@@ -1,4 +1,6 @@
-type Route = unknown;
+// this is a template literal type
+// https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html
+type Route = `/${string}`;
 
 export const goToRoute = (route: Route) => {};
 
