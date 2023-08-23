@@ -1,8 +1,9 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
-type CreateDataShape = {
-  data: unknown;
-  error: unknown;
+// using commas we can have multiple types
+type CreateDataShape<T1, T2> = {
+  data: T1;
+  error: T2;
 };
 
 type tests = [
