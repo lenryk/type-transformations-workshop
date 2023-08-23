@@ -1,6 +1,7 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
-type CreateDataShape<TData, TError> = {
+// same syntax as adding defaults to functions in JS
+type CreateDataShape<TData=boolean, TError=undefined> = {
   data: TData;
   error: TError;
 };
