@@ -2,7 +2,9 @@ import { Equal, Expect } from "../helpers/type-utils";
 
 type TemplateLiteralKey = `${"user" | "post" | "comment"}${"Id" | "Name"}`;
 
-type ObjectOfKeys = unknown;
+// using Record<> allows us to create a structure for our object
+// We use the TemplateLiteralKey as all the props and set them all to string type
+type ObjectOfKeys = Record<TemplateLiteralKey, string>;
 
 type tests = [
   Expect<
