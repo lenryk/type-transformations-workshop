@@ -1,6 +1,11 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
-type GetDataValue<T> = unknown;
+// by passing an object with a data prop and any type it will match all instances
+type GetDataValue<T> = T extends {data: any} ? T["data"] : never;
+
+// using infer we can create a new variable that holds the typeof that variable
+// the infer TData variable is only accessible in the branch of the conditional check
+type GetDataValue2<T> = T extends {data: infer TData} ? TData : never;
 
 type tests = [
   Expect<Equal<GetDataValue<{ data: "hello" }>, "hello">>,
