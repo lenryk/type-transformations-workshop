@@ -8,7 +8,10 @@ type Names = [
   "BB King",
 ];
 
-type GetSurname<T> = unknown;
+// here we create a conditional type with extends
+// this gives us access to the template literal where we can infer the variables
+// once we have the type we can return it
+type GetSurname<T> = T extends `${infer First} ${infer Last}` ? Last : never;
 
 type tests = [
   Expect<Equal<GetSurname<Names[0]>, "Pocock">>,
