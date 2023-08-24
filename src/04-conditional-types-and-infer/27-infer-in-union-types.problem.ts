@@ -10,7 +10,20 @@ const parser3 = {
   extract: () => true,
 };
 
-type GetParserResult<T> = unknown;
+// in this case we reference all as TResult
+// we use a union to check if it matches any of the 3 functions
+// if so we return the TResult as they all have the save var name
+// else return never
+type GetParserResult<T> =  T extends
+  | {
+  parse: () => infer TResult;
+}
+  | {
+  extract: () => infer TResult;
+}
+  | (() => infer TResult)
+  ? TResult
+  : never;
 
 type tests = [
   Expect<Equal<GetParserResult<typeof parser1>, number>>,
