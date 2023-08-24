@@ -10,7 +10,11 @@ const getServerSideProps = async () => {
   };
 };
 
-type InferPropsFromServerSideFunction = unknown;
+// we have a conditional that checks if we are returning a function that returns a promise with an object of props
+// we grab the inferred type of the props key
+// if true = return the type of the props key
+// if not true return never
+type InferPropsFromServerSideFunction<T> = T extends () => Promise<{ props: infer P }> ? P : never;
 
 type tests = [
   Expect<
