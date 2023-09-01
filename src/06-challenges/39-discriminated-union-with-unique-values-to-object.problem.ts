@@ -12,7 +12,12 @@ type Route =
   | { route: "/admin" }
   | { route: "/admin/users" };
 
-type RoutesObject = unknown;
+type RoutesObject = {
+  // grabs the route as the key name
+  // if the key contains an object with a search key grab the type
+  // if it doesnt then set it to never
+  [R in Route as R["route"]]: R extends { search: infer S } ? S : never;
+};
 
 type tests = [
   Expect<
